@@ -10,23 +10,25 @@ use Illuminate\Support\Facades\Validator;
 
 class OrgChartController extends Controller
 {
-   public function store(Request $request)
+    private function validationRules()
     {
-
-        $rules = [
+        return [
             'job_id' => 'required|string',
             'job_title' => 'required|string',
             'emp_name' => 'required|string',
             'emp_id' => 'required|integer',
             'email' => 'required|email',
         ];
-        
-        $file = $request->file('file');
-        $fileContents = file($file->getPathname());
-        array_shift($fileContents);
-        $current_timestamp = Carbon::now()->toDateTimeString();
-        foreach ($fileContents as $line) {
+    }
 
+    private function manageCSV($fileContents)
+    {
+        $rules = $this->validationRules();
+        $current_timestamp = Carbon::now()->toDateTimeString();
+        $employeeData = [];
+        $invalidData = [];
+
+        foreach ($fileContents as $line) {
             $data = str_getcsv($line);
             $employee = [
                 'job_id' => $data[0],
@@ -51,6 +53,24 @@ class OrgChartController extends Controller
                 $employeeData[] = $employee;
             }
     }
+        return [
+            'employeeData' => $employeeData,
+            'invalidData' => $invalidData,
+        ];
+    }
+
+
+
+
+   public function store(Request $request)
+    {
+
+        $file = $request->file('file');
+        $fileContents = file($file->getPathname());
+        array_shift($fileContents);
+        $processed=$this->manageCSV($fileContents);
+        $employeeData=$processed['employeeData'];
+        $invalidData=$processed['invalidData'];
       
         if (!empty($employeeData) &&  empty($invalidData)) {
             Employee::insert($employeeData);
@@ -63,13 +83,30 @@ class OrgChartController extends Controller
             return response()->json(['message' => 'Unsuccessful','No data found' ], 201);
         }
     
-
     }
 
     public function update(Request $request)
     {
+        $file = $request->file('file');
+        $fileContents = file($file->getPathname());
+        array_shift($fileContents);
+        $processed=$this->manageCSV($fileContents);
+        $employeeData=$processed['employeeData'];
+        $invalidData=$processed['invalidData'];
 
+        if (!empty($employeeData) &&  empty($invalidData)) {
+            Employee::upsert($employeeData,['email'],['emp_name','report_to_job_id','report_to_name']);
+            return response()->json(['message' => 'Success', 'data' =>$employeeData ], 201);
+        } elseif(!empty($employeeData) && !empty($invalidData)){
+            Employee::upsert($employeeData,['email'],['emp_name','report_to_job_id','report_to_name']);
+           return response()->json(['message' => 'Success with Unsuccessful Data','Sucsessful Data'=>$employeeData , 'Unsuccessful Data'=>$invalidData ], 201);
+        }else{
+            return response()->json(['message' => 'Unsuccessful','No data found' ], 201);
+        }
+    
     }
 }
 // http://127.0.0.1:8000/api/orgchart/add  to test in postman
 //key - file and upload the orgchart csv file
+
+
