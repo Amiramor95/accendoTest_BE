@@ -72,7 +72,7 @@ This project using Laravel backend API and Postman for API testing.
 
 2. **Select the desired API you want to test**
 
-3. **Once the tab is open, You need to specify the details in the body data**
+3. **Once the tab is open, You need to specify the details in the body data (Supposedly most of the details already populated)**
 
 4. **Use the form-data by check the check box**
 
