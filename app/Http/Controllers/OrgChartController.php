@@ -10,35 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class OrgChartController extends Controller
 {
-    private function validationRules()
-    {
-        return [
-            'job_id' => 'required|string',
-            'job_title' => 'required|string',
-            'emp_name' => 'required|string',
-            'emp_id' => 'required|integer',
-            'email' => 'required|email',
-        ];
-    }
-
-    private function employeeDetails($data)
-    {
-        $current_timestamp = Carbon::now()->toDateTimeString();
-        return [
-            'job_id' => $data[0],
-            'job_title' => $data[1],
-            'emp_name' => $data[2],
-            'emp_id' => $data[3],
-            'email' => $data[4],
-            'report_to_job_id' => $data[5],
-            'report_to_name' => $data[6],
-            'role_priority' => $data[7],
-            'job_level' => $data[8],
-            'is_root' => $data[9],
-            'created_at' => $current_timestamp,
-            'updated_at' => $current_timestamp
-        ];
-    }
 
     public function store(Request $request)
     {
@@ -58,6 +29,23 @@ class OrgChartController extends Controller
          return response()->json($responseData, 201);
     
     
+    }
+
+    public function update(Request $request)
+    {
+        $file = $request->file('file');
+        $fileContents = file($file->getPathname());
+        array_shift($fileContents);
+        $processed=$this->manageCSVUpdate($fileContents);
+        $employeeData=$processed['employeeData'];
+        $invalidData=$processed['invalidData'];
+        $duplicateEntries=$processed['duplicateEntries'];
+
+        $responseScenario=$this->manageResponseUpdate($employeeData,$invalidData,$duplicateEntries);
+        $responseData=$responseScenario['manageResponse'];
+
+
+        return response()->json($responseData, 201);
     }
 
     private function manageCSVStore($fileContents)
@@ -157,22 +145,6 @@ class OrgChartController extends Controller
         }
     }
 
-    public function update(Request $request)
-    {
-        $file = $request->file('file');
-        $fileContents = file($file->getPathname());
-        array_shift($fileContents);
-        $processed=$this->manageCSVUpdate($fileContents);
-        $employeeData=$processed['employeeData'];
-        $invalidData=$processed['invalidData'];
-        $duplicateEntries=$processed['duplicateEntries'];
-
-        $responseScenario=$this->manageResponseUpdate($employeeData,$invalidData,$duplicateEntries);
-        $responseData=$responseScenario['manageResponse'];
-
-
-        return response()->json($responseData, 201);
-    }
 
     private function manageCSVUpdate($fileContents)
     {
@@ -259,6 +231,38 @@ class OrgChartController extends Controller
             $count++;
         }
     }
+
+
+    private function validationRules()
+    {
+        return [
+            'job_id' => 'required|string',
+            'job_title' => 'required|string',
+            'emp_name' => 'required|string',
+            'emp_id' => 'required|integer',
+            'email' => 'required|email',
+        ];
+    }
+
+    private function employeeDetails($data)
+    {
+        $current_timestamp = Carbon::now()->toDateTimeString();
+        return [
+            'job_id' => $data[0],
+            'job_title' => $data[1],
+            'emp_name' => $data[2],
+            'emp_id' => $data[3],
+            'email' => $data[4],
+            'report_to_job_id' => $data[5],
+            'report_to_name' => $data[6],
+            'role_priority' => $data[7],
+            'job_level' => $data[8],
+            'is_root' => $data[9],
+            'created_at' => $current_timestamp,
+            'updated_at' => $current_timestamp
+        ];
+    }
+
 
 }
 
