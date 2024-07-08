@@ -66,7 +66,7 @@ This project using Laravel backend API and Postman for API testing.
     The 'UploadEntireOrgChart' API is to fulfill the first API requirement and 'UpdateOrAddInOrgChart' is to fulfill the second.
     ```
 
-## Step by step to Test API ()
+## Step by step to Test API
 
 1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the collections tab.**
 
