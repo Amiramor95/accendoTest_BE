@@ -74,7 +74,6 @@ class OrgChartController extends Controller
       
         if (!empty($employeeData) &&  empty($invalidData)) { //To check if only got valid data in the csv 
             Employee::insert($employeeData);
-           // return redirect()->back()->with('success', 'CSV file imported successfully.');
            return response()->json(['message' => 'Success','data'=>$employeeData ], 201);
         } elseif(!empty($employeeData) && !empty($invalidData)){ // to check if got valid data and invalid data in the csv
             Employee::insert($employeeData);
@@ -102,7 +101,9 @@ class OrgChartController extends Controller
         } elseif(!empty($employeeData) && !empty($invalidData)){
             Employee::upsert($employeeData,['email'],['emp_name','report_to_job_id','report_to_name']);
            return response()->json(['message' => 'Success with Unsuccessful Data','Sucsessful Data'=>$employeeData , 'Unsuccessful Data'=>$invalidData ], 201);
-        }else{
+        }elseif(!empty($invalidData)){
+            return response()->json(['message' => 'Unsuccessful','Unsuccessful Data'=>$invalidData ], 201);
+         }else{
             return response()->json(['message' => 'Unsuccessful','No data found' ], 201);
         }
     

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project using Laravel backend API 
+This project using Laravel backend API and Postman for API testing.
 
 ## Prerequisites
 
@@ -50,3 +50,120 @@ This project using Laravel backend API
     The Laravel API will be running at `http://localhost:8000`.
 
 ## POSTMAN to Test API
+
+1. **Import the exported Postman API file to your workspace**:
+    ```bash
+    The 'Software Engineer Technical Test.postman_collection.json' file can be found inside the repository main folder
+    ```
+
+2. **Collection**:
+    ```bash
+    The 'Software Engineer Technical Test' collection include both of the api.
+    ```
+
+3. **API**
+    ```bash
+    The 'UploadEntireOrgChart' API is to fulfill the first API requirement and 'UpdateOrAddInOrgChart' is to fulfill the second.
+    ```
+
+## API Test Expectation
+
+1. **UploadEntireOrgChart**
+    ```bash
+    Upon upload '.csv' file it will store all the records to the database.
+    ```
+
+2. **UpdateOrAddInOrgChart**
+    ```bash
+    Upon upload '.csv' file it will add new employee or update employee details or it can do both simultaneously
+    ```
+
+    
+## API Test Validation Scenario
+
+1. **Valid data to store**
+    ```bash
+    Expectation Message
+    "message": "Success",
+    "Data":  [
+        {
+            "job_id": "ACC-0001",
+            "job_title": "CEO",
+            "emp_name": "Alice",
+            "emp_id": "1001",
+            "email": "alice@company.com",
+            "report_to_job_id": "",
+            "report_to_name": "",
+            "role_priority": "1",
+            "job_level": "1",
+            "is_root": "yes",
+            "created_at": "2024-07-08 02:51:18",
+            "updated_at": "2024-07-08 02:51:18"
+        }
+    ]
+
+2. **Some invalid data to update/add**
+    ```bash
+    Expectation Message
+    "message": "Success with Unsuccessful Data",
+    "Sucsessful Data":  [
+        {
+            "job_id": "ACC-0001",
+            "job_title": "CEO",
+            "emp_name": "Alice",
+            "emp_id": "1001",
+            "email": "alice@company.com",
+            "report_to_job_id": "",
+            "report_to_name": "",
+            "role_priority": "1",
+            "job_level": "1",
+            "is_root": "yes",
+            "created_at": "2024-07-08 02:51:18",
+            "updated_at": "2024-07-08 02:51:18"
+        }
+    ]
+    "Unsuccessful Data": [
+        {
+            "job_id": "ACC-0011",
+            "job_title": "Engineer",
+            "emp_name": "Amir",
+            "emp_id": "",
+            "email": "amir@company.com",
+            "report_to_job_id": "ACC-0002",
+            "report_to_name": "Bob",
+            "role_priority": "3",
+            "job_level": "3",
+            "is_root": "no",
+            "created_at": "2024-07-08 02:53:40",
+            "updated_at": "2024-07-08 02:53:40"
+        }
+    ]
+
+3. **Invalid data to update/add**
+    ```bash
+    Expectation Message
+    "message": "Unsuccessful",
+    "Unsuccessful Data": [
+        {
+            "job_id": "ACC-0012",
+            "job_title": "Engineer",
+            "emp_name": "John",
+            "emp_id": "1006",
+            "email": "",
+            "report_to_job_id": "ACC-0002",
+            "report_to_name": "Bob",
+            "role_priority": "3",
+            "job_level": "3",
+            "is_root": "no",
+            "created_at": "2024-07-08 02:58:46",
+            "updated_at": "2024-07-08 02:58:46"
+        }
+    ]
+    ```
+
+4. **No data found**
+    ```bash
+    Expectation Message
+    "message": "Unsuccessful",
+    "0": "No data found"
+    ```
