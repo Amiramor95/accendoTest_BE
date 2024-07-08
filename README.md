@@ -6,7 +6,7 @@ This project using Laravel backend API and Postman for API testing.
 
 ## Prerequisites
 
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - npm
 - Laravel 11
@@ -18,7 +18,7 @@ This project using Laravel backend API and Postman for API testing.
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/your-laravel-repo.git
+    git clone https://github.com/Amiramor95/accendoTest_BE.git
     cd your-laravel-repo
     ```
 
@@ -65,6 +65,22 @@ This project using Laravel backend API and Postman for API testing.
     ```bash
     The 'UploadEntireOrgChart' API is to fulfill the first API requirement and 'UpdateOrAddInOrgChart' is to fulfill the second.
     ```
+
+## Step by step to Test API
+
+1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the collections tab**
+
+2. **Select the desired API you want to test**
+
+3. **Once the tab is open, You need to specify the details in the body data**
+
+4. **Use the form-data by check the check box**
+
+5. **The key-value should be 'file'**
+
+6. **Select File in the dropdown list next to a key name, then select the file you want to send**
+
+
 
 ## API Test Expectation
 
