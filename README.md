@@ -98,7 +98,7 @@ This project using Laravel backend API and Postman for API testing.
     Upon upload '.csv' file it will add new employee or update employee details or it can do both simultaneously.
     ```
     
-## Sample of API Test Validation Scenario and Expectation
+## Sample of API Test Validation Scenario Expectation
 
 1. **Valid data to store**
     ```bash
