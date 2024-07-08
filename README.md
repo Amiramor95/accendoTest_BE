@@ -82,7 +82,9 @@ This project using Laravel backend API and Postman for API testing.
 
 7. **Ensure Laravel is installed and running**
 
-7. **Click 'Send' button to start the testing.**
+8. **Click 'Send' button to start the testing.**
+
+    Please refer to 'postman.PNG' in the main folder for better understanding
 
 
 
