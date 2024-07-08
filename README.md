@@ -38,16 +38,19 @@ This project using Laravel backend API and Postman for API testing.
     php artisan key:generate
     ```
 
-5. **Run migrations**:
-    ```bash
-    php artisan migrate
-    ```
+5. **Ensure MySQL is running**:
 
-6. **Serve the application**:
+6. **Run migrations**:
     ```bash
-    php artisan serve
+   php artisan migrate
     ```
-    The Laravel API will be running at `http://localhost:8000`.
+    
+7. **Ensure MySQL is running**:
+```bash
+php artisan serve
+``` 
+
+    Laravel API will be running at `http://localhost:8000`.
 
 ## POSTMAN to Test API
 
