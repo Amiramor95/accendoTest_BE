@@ -76,11 +76,11 @@ This project using Laravel backend API and Postman for API testing.
 
 4. **choose the form-data as data type by selecting the radio button.**
 
-5. **The key-value should be 'file' if not, need to keyin manually.**
+5. **The key-value should be 'file'. If not, need to key in manually.**
 
 6. **Select File in the dropdown list next to a key name, then select the file.**
 
-7. **Ensure Laravel is is nstalled and running**
+7. **Ensure Laravel is installed and running**
 
 7. **Click 'Send' button to start the testing.**
 
