@@ -53,7 +53,7 @@ This project using Laravel backend API and Postman for API testing.
 
 1. **Import the exported Postman API file to your workspace**:
     ```bash
-    The 'Software Engineer Technical Test.postman_collection.json' file can be found inside the repository main folder
+    The 'Software Engineer Technical Test.postman_collection.json' file can be found inside the repository main folder.
     ```
 
 2. **Collection**:
@@ -68,17 +68,17 @@ This project using Laravel backend API and Postman for API testing.
 
 ## Step by step to Test API
 
-1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the collections tab**
+1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the collections tab.**
 
-2. **Select the desired API you want to test**
+2. **Select the desired API you want to test.**
 
-3. **Once the tab is open, You need to specify the details in the body data (Supposedly most of the details already populated)**
+3. **Once the tab is open, You need to specify the details in the body data.(Supposedly most of the details already populated)**
 
-4. **Use the form-data by check the check box**
+4. **choose the form-data as data type by selecting the radio button.**
 
-5. **The key-value should be 'file'**
+5. **The key-value should be 'file'.**
 
-6. **Select File in the dropdown list next to a key name, then select the file you want to send**
+6. **Select File in the dropdown list next to a key name, then select the file you want to send.**
 
 
 
@@ -91,7 +91,7 @@ This project using Laravel backend API and Postman for API testing.
 
 2. **UpdateOrAddInOrgChart**
     ```bash
-    Upon upload '.csv' file it will add new employee or update employee details or it can do both simultaneously
+    Upon upload '.csv' file it will add new employee or update employee details or it can do both simultaneously.
     ```
 
     
