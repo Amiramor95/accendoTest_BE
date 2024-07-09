@@ -71,7 +71,9 @@ This project using Laravel backend API and Postman for API testing.
 
 ## Step by step to Test API
 
-1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the Collections tab.**
+1. **Ensure Laravel is installed and running.**
+
+2. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the Collections tab.**
 
 3. **Select the desired API to test.**
 
@@ -84,8 +86,6 @@ This project using Laravel backend API and Postman for API testing.
 7. **Select File in the dropdown list next to the key name.**
 
 8. **In value column, upload the csv file by clicking on the "Select files" and click on +.**
-
-9. **Ensure Laravel is installed and running.**
 
 10. **Click 'Send' button to start the testing.**
 
