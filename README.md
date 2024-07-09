@@ -61,7 +61,7 @@ This project using Laravel backend API and Postman for API testing.
 
 2. **Collection**:
     ```bash
-    The 'Software Engineer Technical Test' collection include both of the api.
+    The 'Software Engineer Technical Test' collection included both of the APIs.
     ```
 
 3. **API**
@@ -71,21 +71,21 @@ This project using Laravel backend API and Postman for API testing.
 
 ## Step by step to Test API
 
-1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the collections tab.**
+1. **In the Postman, extend the imported collection 'Software Engineer Technical Test' at the Collections tab.**
 
-2. **Select the desired API to test.**
+3. **Select the desired API to test.**
 
-3. **Once the tab is open, specify the details in the body data.(Supposedly the details already populated)**
+4. **Once the tab is open, specify the details in the body data. (The details supposedly are already populated)**
 
-4. **choose the form-data as data type by selecting the radio button.**
+5. **Choose the form-data as data type by selecting the radio button.**
 
-5. **The key-value should be 'file'. If not, need to key in manually.**
+6. **The key-value should be 'file'. If not, need to key in manually.**
 
-6. **Select File in the dropdown list next to the key name, then select the file.**
+7. **Select File in the dropdown list next to the key name, then select the file.**
 
-7. **Ensure Laravel is installed and running**
+8. **Ensure Laravel is installed and running.**
 
-8. **Click 'Send' button to start the testing.**
+9. **Click 'Send' button to start the testing.**
 
     Please refer to 'postman.PNG' in the main folder for better understanding
 
