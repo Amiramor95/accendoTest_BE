@@ -81,11 +81,13 @@ This project using Laravel backend API and Postman for API testing.
 
 6. **The key-value should be 'file'. If not, need to key in manually.**
 
-7. **Select File in the dropdown list next to the key name, then select the file.**
+7. **Select File in the dropdown list next to the key name.**
 
-8. **Ensure Laravel is installed and running.**
+8. **In value column, upload the csv file by clicking on the "Select files" and click on +.**
 
-9. **Click 'Send' button to start the testing.**
+9. **Ensure Laravel is installed and running.**
+
+10. **Click 'Send' button to start the testing.**
 
     Please refer to 'postman.PNG' in the main folder for better understanding
 
